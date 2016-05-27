@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="ui divider"></div> <!--Bootstrap-->
+<div class="ui equal width stretched grid"> <!--Bootstrap-->
+  <div class="column" class="fixed"> <!--Bootstrap-->
+    <div class="ui segment"> <!--Bootstrap-->
+
+      <!--<a class="ui right pointing basic teal ribbon label" href="{% url 'incluir_cliente'%}">Novo Cliente</a>
+aaaaaaaaaa-->
+      <p>Lista de Clientes</p> <!--Bootstrap-->
+        
+      <!-- <form action="" method="post" id="form" role="form" width="100px" >  Formulário Bootstrap campo de listar cliente-->
+        <div width="100px"> {% csrf_token %} </div>
+       
+        {{ form.nome }}
+          <button class="btn-floating btn-large waves-effect waves-light red" type="submit" name="action">
+            <i class="material-icons">search</i>
+          </button> <!--Botão Materialize botão pesquisar-->
+          <a class="btn-floating btn-large waves-effect waves-light red" href="{% url 'incluir_cliente'%}"><i class="material-icons">add</i></a> <!-- Botão Adicionar-->
+      </form>
+    </div>
+    <table class="ui very basic collapsing celled table">
+      <thead>
+        <tr><th>Cliente</th>
+        <th></th>
+
+        </tr>
+      </thead>
+    <tbody>
+    {% for c in cliente %}
+    <tr>
+      <td width="400px">
+        <a href="{% url 'foto_cliente' c.id %}">
+          <h4 class="ui image header">
+            <img WIDTH = '100PX'src="{{c.foto.url}}" class="ui mini rounded image" >
+            <div class="content">
+              {{c.nome}}
+                <div class="sub header">DADOS {{c.endereco.tipo}}
+                </div>
+            </div>
+          </h4>
+        </a>
+      </td>
+        
+      <td>
+        <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+          <a class="btn-floating btn-large red">
+            <i class="large material-icons">mode_edit</i>
+          </a>
+          <ul>
+            <li><a class="btn-floating yellow darken-1"><i class="material-icons">mode_edit</i></a></li>
+            <li><a class="btn-floating green"><i class="material-icons">mode_edit</i></a></li>
+            <li><a class="btn-floating blue"><i class="material-icons">mode_edit</i></a></li>
+          </ul>
+        </div>
+
+        <div class="ui buttons">
+          <a class="ui button" href="{% url 'editar_cliente' c.id %}">Editar</a>
+          <div class="or" data-text="ou"></div>
+          <a class="ui positive button" href="{% url 'excluir_cliente' c.id %}">Excluir</a>
+          <div class="or" data-text="ou"></div>
+        </div>
+      </td>
+    </tr>
+    {% empty %}
+    <div class="ui error message">Atenção! Não foi encontrado clientes.</div>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

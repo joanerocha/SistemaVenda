@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="ui grid container">
+  <div class="row">
+    <div class="column">
+      {% if usuario != ''%}
+        <a href="{% url 'sair' %}"> Sair </a> Usuário : {{usuario}}
+      {% else %}
+
+      {% endif %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <div class="ui message">
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

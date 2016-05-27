@@ -1,0 +1,25 @@
+{%extends "base.html"%}
+{% load staticfiles %}
+
+{% block content %}
+
+
+  {% if not msg == '' %}
+    <div class="alert alert-success">
+      <strong>Atenção!</strong> {{msg}} 
+    </div>
+  {% endif %}
+<div align="center">
+  <img src="{{cliente.foto.url}}" class="ui mini rounded image">
+</div>  
+<form class="ui form" method="post" id="form">
+ {% csrf_token %}
+  <div class="field">
+    <label>Nome</label>
+    {{form.nome}}
+    </div>
+
+  <button class="ui button" type="submit">Confirmar</button>
+</form>
+
+{% endblock %}
