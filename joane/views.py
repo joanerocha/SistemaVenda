@@ -11,8 +11,8 @@ from joane.models import *
 from joane.forms import *
 
 # Create your views here.
-#def inicio(request):
- #   return render(request, 'templates/base.html', {})
+def inicio(request):
+   return render(request, 'templates/base.html', {})
 
 def index(request):
 	try:
@@ -26,7 +26,7 @@ def index(request):
 
 		})
 
-@login_required(login_url='/entrar/')
+#@login_required(login_url='/entrar/')
 def cliente(request):
 	if request.method=='POST':
 		amsg = []
@@ -44,7 +44,7 @@ def cliente(request):
 		'cliente': cl
 		})
 
-@login_required(login_url='/entrar/')
+#@login_required(login_url='/entrar/')
 def editarcliente(request, id_cliente):
 	cmsg=''
 	cl = Cliente.cliente.get(pk = id_cliente)
@@ -64,7 +64,7 @@ def editarcliente(request, id_cliente):
 	 	'form': form
 	 	})
 
-@login_required(login_url='/entrar/')
+#@login_required(login_url='/entrar/')
 def incluircliente(request):
 	cmsg=''
 	if request.method == "POST":
@@ -83,7 +83,7 @@ def incluircliente(request):
 
 
 
-@login_required(login_url='/entrar/')
+#@login_required(login_url='/entrar/')
 def excluircliente(request,id_cliente):
 	cl = Cliente.cliente.get(pk = id_cliente)
 	cmsg = ''
@@ -95,10 +95,7 @@ def excluircliente(request,id_cliente):
 	 	'nmsg': nmsg1
 	 	})	
 
-
-
-
-@login_required(login_url='/entrar/')
+#@login_required(login_url='/entrar/')
 def fotocliente(request, id_cliente):
 	import os, os.path
 	if request.method == 'POST':

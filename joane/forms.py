@@ -19,6 +19,6 @@ class FormFotoCliente(forms.Form):
 class FormCliente(ModelForm):
 	class Meta:
 		model=Cliente
-		fields=['nome','email']
+		fields=['nome',]
 
 	

@@ -1,19 +1,13 @@
 {% extends 'base.html'%}
 {% block content %}
 
-<div class="ui divider"></div> <!--Bootstrap-->
-<div class="ui equal width stretched grid"> <!--Bootstrap-->
-  <div class="column" class="fixed"> <!--Bootstrap-->
-    <div class="ui segment"> <!--Bootstrap-->
-
-      <!--<a class="ui right pointing basic teal ribbon label" href="{% url 'incluir_cliente'%}">Novo Cliente</a>
-aaaaaaaaaa-->
+<div class="ui divider"></div> 
+<div class="ui equal width stretched grid"> 
+  <div class="column" class="fixed"> 
+    <div class="ui segment"> 
       <p>Lista de Clientes</p> <!--Bootstrap-->
-        
-      <!-- <form action="" method="post" id="form" role="form" width="100px" >  Formulário Bootstrap campo de listar cliente-->
-        <div width="100px"> {% csrf_token %} </div>
-       
-        {{ form.nome }}
+          {% csrf_token %}
+          {{ form.nome }}
           <button class="btn-floating btn-large waves-effect waves-light red" type="submit" name="action">
             <i class="material-icons">search</i>
           </button> <!--Botão Materialize botão pesquisar-->

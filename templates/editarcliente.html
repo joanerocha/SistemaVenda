@@ -3,11 +3,10 @@
 
 {% block content %}
 
-
   {% if not msg == '' %}
-    <div class="alert alert-success">
-      <strong>Atenção!</strong> {{msg}} 
-    </div>
+<div class="alert alert-success">
+  <strong>Atenção!</strong> {{msg}} 
+</div>
   {% endif %}
 <div align="center">
   <img src="{{cliente.foto.url}}" class="ui mini rounded image">
@@ -17,8 +16,7 @@
   <div class="field">
     <label>Nome</label>
     {{form.nome}}
-    </div>
-
+  </div>
   <button class="ui button" type="submit">Confirmar</button>
 </form>
 

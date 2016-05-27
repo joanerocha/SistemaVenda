@@ -24,10 +24,7 @@ urlpatterns = [
     url(r'^static/(.*)$', 'django.views.static.serve', {'document_root': './static/',}),
     url(r'^editarcliente/(?P<id_cliente>\d+)', 'joane.views.editarcliente',name='editar_cliente'),
     url(r'^incluircliente/', 'joane.views.incluircliente',name='incluir_cliente'),
-    #url(r'^incluirlancamentocliente/(?P<id_cliente>\d+)', 'cadastro.views.incluirlancamentocliente',name='incluir_lancamento_cliente'),
     url(r'^fotocliente/(?P<id_cliente>\d+)', 'joane.views.fotocliente',name='foto_cliente'),
     url(r'^excluircliente/(?P<id_cliente>\d+)', 'joane.views.excluircliente',name='excluir_cliente'),
-    #url(r'^leiame/','cadastro.views.leiame',name='leiame'),
     url(r'^entrar/','joane.views.entrar',name='entrar'),
-    url(r'^sair/','joane.views.sair',name='sair'),
 ]

@@ -3,17 +3,13 @@
 <div class="ui grid container">
   <div class="row">
     <div class="column">
-      {% if usuario != ''%}
-        <a href="{% url 'sair' %}"> Sair </a> Usuário : {{usuario}}
-      {% else %}
-
+      {% if usuario == ''%}
+      <a href="{% url 'entrar' %}"/>
       {% endif %}
-    </div>
   </div>
   <div class="row">
     <div class="column">
       <div class="ui message">
-        
       </div>
     </div>
   </div>

@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+  <br>
+
+  <form class="ui form" action="" method="post" id="form" role="form">
+    {% csrf_token %}
+    <div class="field">
+      <label>Usuário</label>
+      <input type="text" name='usuario' placeholder="Digite seu usuário">
+    </div>
+    <div class="field">
+     <label>Senha</label>
+     <input type="password" name="senha" placeholder="Digite sua senha">
+    </div>
+    <button class="ui button" type="submit">Entrar</button>
+  </form>
+
+{% endblock %}
