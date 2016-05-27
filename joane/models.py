@@ -63,6 +63,8 @@ class Fornecedor(models.Model):
 	def __str__(self):
 		return self.fnome
 
+#Documento
+
 class FDocumento(models.Model):
 	fornecedor = models.ForeignKey(Fornecedor)
 	fnumeroDoc = models.DecimalField(verbose_name = 'Número Documento', max_digits = 15, decimal_places = 2, default = 0, primary_key = 'True')
@@ -73,6 +75,8 @@ class FDocumento(models.Model):
 
 	def __str__(self):
 		return self.ftipo
+
+#Endereco
 
 class FEndereco(models.Model):
 	fornecedor = models.ForeignKey(Fornecedor)
@@ -86,6 +90,8 @@ class FEndereco(models.Model):
 
 	def __str__ (self):
 		return self.ftipo
+
+#Email
 
 class FEmail(models.Model):
 	fornecedor = models.ForeignKey(Fornecedor)
@@ -109,6 +115,7 @@ class Unidade(models.Model):
 
 class Produto(models.Model):
 	unidade = models.ForeignKey(Unidade)
+	pnome = models.CharField(verbose_name = 'Nome', max_length = 100)
 	foto = models.ImageField(upload_to = 'produto/', height_field = None, width_field = None, max_length = 100, blank = True, null = True, default = 'produto/no_foto.jpg')
 	descricao = models.CharField(verbose_name = 'Descrição do Produto', max_length = 100)
 	estoque = models.DecimalField(verbose_name = 'Estoque', max_digits = 15, decimal_places = 2, default = 0)

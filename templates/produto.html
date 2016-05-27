@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="ui divider"></div> 
+<div class="ui equal width stretched grid"> 
+  <div class="column" class="fixed"> 
+    <div class="ui segment"> 
+      <p>Lista de Produtos</p> <!--Bootstrap-->
+          {% csrf_token %}
+          {{ form.pnome }}
+          <button class="btn-floating btn-large waves-effect waves-light red" href="{% url 'produto_visual'%}" type="submit" name="action">
+            <i class="material-icons">search</i>
+          </button> <!--Botão Materialize botão pesquisar-->
+          <a class="btn-floating btn-large waves-effect waves-light red" href="{% url 'incluir_produto'%}"><i class="material-icons">add</i></a> <!-- Botão Adicionar-->
+      </form>
+    </div>
+    <table class="ui very basic collapsing celled table">
+      <thead>
+        <tr><th>Produto</th>
+        <th></th>
+
+        </tr>
+      </thead>
+    <tbody>
+    {% for p in produto %}
+    <tr>
+      <td width="400px">
+        <a href="{% url 'foto_produto' p.id %}">
+          <h4 class="ui image header">
+            <img WIDTH = '100PX'src="{{p.foto.url}}" class="ui mini rounded image" >
+            <div class="content">
+              {{p.pnome}}
+                <div class="sub header">DADOS {{p.endereco.tipo}}
+                </div>
+            </div>
+          </h4>
+        </a>
+      </td>
+        
+      <td>
+        <div class="ui buttons">
+          <a class="ui button" href="{% url 'editar_produto' p.id %}">Editar</a>
+          <div class="or" data-text="ou"></div>
+          <a class="ui positive button" href="{% url 'excluir_produto' p.id %}">Excluir</a>
+          <div class="or" data-text="ou"></div>
+        </div>
+      </td>
+    </tr>
+    {% empty %}
+    <div class="ui error message">Atenção! Não foi encontrado produto.</div>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

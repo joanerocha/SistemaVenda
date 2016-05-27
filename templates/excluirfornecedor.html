@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{% load staticfiles %}
+
+{% block content %}
+
+	{% if nmsg == 0 %}
+		<div class= 'alert alert-danger'> 
+			<strong>Atenção!</strong>{{msg}} 
+		</div>
+	{% else %}
+		<div class= 'alert alert-success'> 
+			<strong>Atenção!</strong>{{msg}} 
+		</div>
+	{% endif %}
+
+{% endblock %}

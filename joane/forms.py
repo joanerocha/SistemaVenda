@@ -21,4 +21,32 @@ class FormCliente(ModelForm):
 		model=Cliente
 		fields=['nome',]
 
-	
+
+
+#Fornecedor
+
+class FormLocalizaFornecedor(forms.Form):
+	fnome = forms.CharField(label='Nome', required=True, widget=forms.TextInput(attrs={'placeholder': 'Pesquisar'}))
+
+class FormFotoFornecedor(forms.Form):
+	file = forms.FileField(label='Buscar foto')  
+
+class FormFornecedor(ModelForm):
+	class Meta:
+		model=Fornecedor
+		fields=['fnome',]
+
+
+
+#Produto
+
+class FormLocalizaProduto(forms.Form):
+	pnome = forms.CharField(label='Nome', required=True, widget=forms.TextInput(attrs={'placeholder': 'Pesquisar'}))
+
+class FormFotoProduto(forms.Form):
+	file = forms.FileField(label='Buscar foto')  
+
+class FormProduto(ModelForm):
+	class Meta:
+		model=Produto
+		fields=['pnome',]	

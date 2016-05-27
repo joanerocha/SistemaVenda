@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="ui divider"></div> 
+<div class="ui equal width stretched grid"> 
+  <div class="column" class="fixed"> 
+    <div class="ui segment"> 
+      <p>Lista de Fornecedores</p> <!--Bootstrap-->
+          {% csrf_token %}
+          {{ form.nome }}
+          <button class="btn-floating btn-large waves-effect waves-light red" type="submit" name="action">
+            <i class="material-icons">search</i>
+          </button> <!--Botão Materialize botão pesquisar-->
+          <a class="btn-floating btn-large waves-effect waves-light red" href="{% url 'incluir_fornecedor'%}"><i class="material-icons">add</i></a> <!-- Botão Adicionar-->
+      </form>
+    </div>
+    <table class="ui very basic collapsing celled table">
+      <thead>
+        <tr><th>Fornecedor</th>
+        <th></th>
+
+        </tr>
+      </thead>
+    <tbody>
+    {% for f in fonecedor %}
+    <tr>
+      <td width="400px">
+        <a href="{% url 'foto_fornecedor' f.id %}">
+          <h4 class="ui image header">
+            <img WIDTH = '100PX'src="{{f.foto.url}}" class="ui mini rounded image" >
+            <div class="content">
+              {{f.nome}}
+                <div class="sub header">DADOS {{f.endereco.tipo}}
+                </div>
+            </div>
+          </h4>
+        </a>
+      </td>
+        
+      <td>
+        <div class="ui buttons">
+          <a class="ui button" href="{% url 'editar_fornecedor' f.id %}">Editar</a>
+          <div class="or" data-text="ou"></div>
+          <a class="ui positive button" href="{% url 'excluir_fornecedor' f.id %}">Excluir</a>
+          <div class="or" data-text="ou"></div>
+        </div>
+      </td>
+    </tr>
+    {% empty %}
+    <div class="ui error message">Atenção! Não foi encontrado Fornecedores.</div>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
