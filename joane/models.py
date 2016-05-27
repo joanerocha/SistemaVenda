@@ -116,10 +116,15 @@ class Unidade(models.Model):
 class Produto(models.Model):
 	unidade = models.ForeignKey(Unidade)
 	pnome = models.CharField(verbose_name = 'Nome', max_length = 100)
-	foto = models.ImageField(upload_to = 'produto/', height_field = None, width_field = None, max_length = 100, blank = True, null = True, default = 'produto/no_foto.jpg')
+	pfoto = models.ImageField(upload_to = 'produto/', height_field = None, width_field = None, max_length = 100, blank = True, null = True, default = 'produto/no_foto.jpg')
 	descricao = models.CharField(verbose_name = 'Descrição do Produto', max_length = 100)
 	estoque = models.DecimalField(verbose_name = 'Estoque', max_digits = 15, decimal_places = 2, default = 0)
 
+	produto = models.Manager()
+	id = models.AutoField(primary_key = True)
+
+	def __str__(self):
+		return self.pnome
 	#pega chave
 
 #Item
